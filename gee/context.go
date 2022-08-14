@@ -10,6 +10,8 @@ type H map[string]any
 type Context struct {
 	W   http.ResponseWriter
 	Req *http.Request
+
+	Params map[string]string
 }
 
 func NewContext(w http.ResponseWriter, req *http.Request) *Context {

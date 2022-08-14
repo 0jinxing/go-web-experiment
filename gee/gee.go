@@ -3,19 +3,19 @@ package gee
 import "net/http"
 
 type Gee struct {
-	route *Route
+	route *Router
 }
 
 func New() *Gee {
-	return &Gee{route: NewRoute()}
+	return &Gee{route: NewRouter()}
 }
 
 func (g *Gee) GET(pattern string, handler RouteHandler) {
-	g.route.AddHandler("GET", pattern, handler)
+	g.route.AddRoute("GET", pattern, handler)
 }
 
 func (g *Gee) POST(pattern string, handler RouteHandler) {
-	g.route.AddHandler("POST", pattern, handler)
+	g.route.AddRoute("POST", pattern, handler)
 }
 
 func (g *Gee) ServeHTTP(w http.ResponseWriter, req *http.Request) {
