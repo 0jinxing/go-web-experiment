@@ -39,5 +39,12 @@ func main() {
 		ctx.Status(http.StatusOK).JSON(gee.H{"filepath": ctx.Params["filepath"]})
 	})
 
+	v1 := app.Group("/v1")
+	{
+		v1.GET("/hello", func(ctx *gee.Context) {
+			ctx.Status(http.StatusOK).Text("v1 hello")
+		})
+	}
+
 	app.Run(":9999")
 }
